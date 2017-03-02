@@ -1,0 +1,69 @@
+.box {
+  width: 100px;
+  height: 100px;
+  border-style: solid;
+  border-width: 7px;
+  position: relative;
+}
+
+.red {
+  background: red;
+  border-color: violet;
+  color: violet;
+}
+
+.orange {
+  background: orange;
+  border-color: indigo;
+  color: indigo;
+  left: 50px;
+  bottom: 50px;
+}
+
+.yellow {
+  background: yellow;
+  border-color: blue;
+  color: blue;
+  left: 100px;
+  bottom: 100px;
+}
+
+.green {
+  background: green;
+  border-color: black;
+  color: black;
+  left: 150px;
+  bottom: 150px;
+}
+
+.blue {
+  background: blue;
+  border-color: yellow;
+  color: yellow;
+  left: 100px;
+  bottom: 200px;
+}
+
+.indigo {
+  background: indigo;
+  border-color: orange;
+  color: orange;
+  left: 50px;
+  bottom: 250px;
+}
+
+.violet {
+  background: violet;
+  border-color: red;
+  color: red;
+  left: 0px;
+  bottom: 300px;
+}
+
+.black {
+  background: black;
+  border-color: white;
+  color: white;
+  left: 400px;
+  bottom: 610px;
+}
