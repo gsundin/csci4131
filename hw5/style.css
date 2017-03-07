@@ -3,9 +3,28 @@
     width: 980px;
     height: 347px;
 }
+
 .rotating-item {
     display: none;
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.balogna {
+	width: 295px;
+	height: 800px;
+	margin: auto;
+}
+
+.nextButton {
+	position: relative;
+	display: inline-block;
+	padding: 20px 20px 20px 20px;
+}
+
+.prevButton {
+	position: relative;
+	display: inline-block;
+	padding: 20px 20px 20px 20px;
 }

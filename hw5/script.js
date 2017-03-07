@@ -1,71 +1,60 @@
-$(window).load(function() { //start after HTML, images have loaded
- 
-    var InfiniteRotator =
-    {
-        init: function()
-        {
-            // Initial fade-in time (in milliseconds)
-            var initialFadeIn = 500;
- 
-            // Default interval between items (in milliseconds)
-            var itemInterval = 3000;
- 
-            // Cross-fade time (in milliseconds)
-            var fadeTime = 500;
- 
-            // Count number of items
-            var numberOfItems = $('.rotating-item').length;
- 
-            // Set current item
-            var currentItem = 0;
+var imageArray = ["assets/images/JavascriptCookbook.jpg",
+                  "assets/images/learningPerl.jpg",
+                  "assets/images/modernPHP.jpg",
+                  "assets/images/mysqlCookbook.jpg"];
 
-            // Show first item
-            $('.rotating-item').eq(currentItem).fadeIn(initialFadeIn);
+var imageIndex = 0;
 
-            // Rotate forever
-            while(1) {
-                $('.rotating-item').eq(currentItem).delay(1000).fadeIn(fadeTime);
+function nextImage () {
+    myPhoto.setAttribute("src", imageArray[imageIndex]);
+    myLink.setAttribute("href", imageArray[imageIndex]);
+    imageIndex++;
+    if (imageIndex >= imageArray.length) {
+        imageIndex = 0;
+    }
+}
 
-                // Variable display intervals should be:
-                // 3000 ms - JavaScript
-                // 5000 ms - Perl
-                // 3000 ms - PHP
-                // 7000 ms - MySQL
-                switch (currentItem) {
-                    case 0: itemInterval = 3000;
-                        break;
-                    case 1: itemInterval = 5000;
-                        break;
-                    case 2: itemInterval = 3000;
-                        break;
-                    case 3: itemInterval = 7000;
-                        break;
-                }
+function prevImage () {
+    myPhoto.setAttribute("src", imageArray[imageIndex]);
+    myPhoto.setAttribute("href", imageArray[imageIndex]);
+    imageIndex--;
+    if (imageIndex <= -1) {
+        imageIndex = imageArray.length - 1;
+    }
+}
 
-                if(currentItem == numberOfItems -1){
-                    currentItem = 0;
-                }else{
-                    currentItem++;
-                }
+var duration = 1000;
+var intervalHandle = setInterval(getDuration, duration);
 
-                $('.rotating-item').eq(currentItem).delay(1000).fadeOut(fadeTime);
-            }
- 
-            // Loop through the items
-            /*var infiniteLoop = setInterval(function(){
-                $('.rotating-item').eq(currentItem).fadeOut(fadeTime);
- 
-                if(currentItem == numberOfItems -1){
-                    currentItem = 0;
-                }else{
-                    currentItem++;
-                }
-                $('.rotating-item').eq(currentItem).fadeIn(fadeTime);
- 
-            }, itemInterval);
-        }*/
-    };
- 
-    InfiniteRotator.init();
- 
-});
+function getDuration () {
+    nextImage();
+    clearInterval(intervalHandle);
+    switch (imageIndex) {
+        case 0:
+            duration = 3000;
+            break;
+        case 1:
+            duration = 5000;
+            break;
+        case 2:
+            duration = 3000;
+            break;
+        case 3:
+            duration = 7000;
+            break;
+    }
+    //alert(duration);
+    intervalHandle = setInterval(getDuration, duration);
+}
+
+myPhoto.onclick = function() {
+    clearInterval(intervalHandle);
+}
+
+document.getElementById("next").onclick = function() {
+    nextImage();
+}
+
+document.getElementById("prev").onclick = function() {
+    prevImage();
+}

@@ -3,18 +3,27 @@
 	<head>
 		<meta charset="utf-8"/>
 		<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=3.0.1"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<title>Rotating Ads</title>
 	</head>
 	<body>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=3.0.1"></script><script type="text/javascript" src="script.js"></script>
-</pre>
-<h1>Aww yea dawg</h1>
-<h2>wud u look at thos bewks <i class="em em-smirk"></i></h2>
-<div id="rotating-item-wrapper"><img class="rotating-item" src="assets/images/JavascriptCookbook.jpg" alt="a person entering a building" width="500" height="656" />
- <img class="rotating-item" src="assets/images/learningPerl.jpg" alt="photo of building across from our office" width="500" height="656" />
- <img class="rotating-item" src="assets/images/modernPHP.jpg" alt="building entrance with neon backlit walls" width="500" height="656" />
- <img class="rotating-item" src="assets/images/mysqlCookbook.jpg" alt="building lobby window reflections" width="500" height="656" /></div>
-<pre>
+		<h1>Aww yea dawg</h1>
+		<h2>wud u look at thos bewks <i class="em em-smirk"></i></h2>
+
+		<!--<div id="rotating-item-wrapper"><img class="rotating-item" src="assets/images/JavascriptCookbook.jpg" alt="a person entering a building" width="500" height="656" />
+		<img class="rotating-item" src="assets/images/learningPerl.jpg" alt="photo of building across from our office" width="500" height="656" />
+		<img class="rotating-item" src="assets/images/modernPHP.jpg" alt="building entrance with neon backlit walls" width="500" height="656" />
+		<img class="rotating-item" src="assets/images/mysqlCookbook.jpg" alt="building lobby window reflections" width="500" height="656" /></div>-->
+
+		<div class="balogna">
+			<a href="assets/images/JavascriptCookbook.jpg" id="myLink" target="_blank">
+				<img class="balogna" id="myPhoto" src="assets/images/JavascriptCookbook.jpg"/>
+			</a>
+
+			<input class="nextButton" type="button" value="Prev" id="prev">
+			<input class="prevButton" type="button" value="Next" id="next">
+		</div>
+		<script type="text/javascript" src="script.js"></script>
 	</body>
 </html>
