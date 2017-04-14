@@ -1,52 +1,58 @@
-function validateForm() {
-    if (document.forms["frm"]["fname"].value == "") {
+function ajax_post(){
+    // Create our XMLHttpRequest object
+    var xmlhttp = new XMLHttpRequest();
+    // Create some variables we need to send to our PHP file
+    var fn = document.getElementById("first_name").value;
+    var ln = document.getElementById("last_name").value;
+    var add1 = document.getElementById("add1").value;
+    var add2 = document.getElementById("add2").value;
+    var city = document.getElementById("city").value;
+    var state = document.getElementById("state").value;
+    var zip = document.getElementById("zip").value;
+
+    var everythingFilledOut = true;
+
+    if (fn == "") {
         alert("First name must be filled out");
-        return false;
+        everythingFilledOut = false;
     }
-    if (document.forms["frm"]["lname"].value == "") {
+    else if (ln == "") {
         alert("Last name must be filled out");
-        return false;
+        everythingFilledOut = false;
     }
-    if (document.forms["frm"]["add1"].value == "") {
+    else if (add1 == "") {
         alert("Address line 1 must be filled out");
-        return false;
+        everythingFilledOut = false;
     }
-    if (document.forms["frm"]["city"].value == "") {
+    else if (city == "") {
         alert("City must be filled out");
-        return false;
+        everythingFilledOut = false;
     }
-    if (document.forms["frm"]["state"].value == "") {
+    else if (state == "") {
         alert("State must be filled out");
-        return false;
+        everythingFilledOut = false;
     }
-    if (document.forms["frm"]["zip"].value == "") {
+    else if (zip == "") {
         alert("Zip code must be filled out");
-        return false;
+        everythingFilledOut = false;
     }
-    //alert("hey d00d");
+
+    var vars = "firstname="+fn+"&lastname="+ln+"&add1="+add1+"&add2="+add2+"&city="+city+"&state="+state+"&zip="+zip;
+
+    if (everythingFilledOut == true) {
+      xmlhttp.open("POST", "my_parse_file.php", true);
+    // Set content type header information for sending url encoded variables in the request
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // Access the onreadystatechange event for the XMLHttpRequest object
+    xmlhttp.onreadystatechange = function() {
+      if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var return_data = xmlhttp.responseText;
+        document.getElementById("status").innerHTML = return_data;
+        }
+      }
+      // Send the data to PHP now... and wait for response to update the status div
+      xmlhttp.send(vars); // Actually execute the request
+      document.getElementById("status").innerHTML = "processing...";
+    }
+    
 }
-
-var xmlhttp = new XMLHttpRequest();
-
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var creds = JSON.parse(this.responseText);
-        /*document.getElementById("fname").innerHTML = creds.FirstName;
-        document.getElementById("lname").innerHTML = creds.LastName;
-        document.getElementById("add1").innerHTML = creds.AddressLine1;
-        document.getElementById("add2").innerHTML = creds.AddressLine2;
-        document.getElementById("city").innerHTML = creds.City;
-        document.getElementById("state").innerHTML = creds.State;
-        document.getElementById("zip").innerHTML = creds.ZipCode;*/
-    }
-};
-
-//alert("Opening the server.php file");
-
-xmlhttp.open("GET", "server.php?q="+str, true);
-
-//alert("Sending data to server.php");
-
-xmlhttp.send();
-
-alert("Finished sending!");
