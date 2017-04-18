@@ -10,6 +10,10 @@ function ajax_post(){
     var state = document.getElementById("state").value;
     var zip = document.getElementById("zip").value;
 
+    //var previousCreds = document.getElementById("status").innerHTML;
+
+    //alert(previousCreds);
+
     var everythingFilledOut = true;
 
     if (fn == "") {
@@ -53,6 +57,9 @@ function ajax_post(){
       // Send the data to PHP now... and wait for response to update the status div
       xmlhttp.send(vars); // Actually execute the request
       document.getElementById("status").innerHTML = "processing...";
+
+      var form = document.getElementById("frm");
+      frm.reset();
     }
     
 }
