@@ -54,7 +54,7 @@ if( $_POST )
         '{$users_city}', '{$users_state}', '{$users_zip}');";
   } else {
     $query = "SELECT `ID`, `First Name`, `Last Name`, `Address Line 1`,
-        `Address Line 2`, `City`, `State`, `Zip Code` FROM `addressbook`;";
+        `Address Line 2`, `City`, `State`, `Zip Code` FROM `addressbook` ORDER BY `Last Name`;";
   }
 
   $retval = mysql_query($query, $conn);
