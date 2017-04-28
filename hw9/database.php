@@ -1,5 +1,4 @@
 <?
-// Src: http://www.inmotionhosting.com/support/edu/website-design/using-php-and-mysql/php-insert-database
 session_start();
 
 if( $_POST )
