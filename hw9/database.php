@@ -54,18 +54,14 @@ if( $_POST )
         '{$users_city}', '{$users_state}', '{$users_zip}');";
   } else {
     $query = "SELECT `ID`, `First Name`, `Last Name`, `Address Line 1`,
-        `Address Line 2`, `City`, `State`, `Zip Code` FROM `addressbook` ORDER BY `Last Name`;";
+        `Address Line 2`, `City`, `State`, `Zip Code` FROM `addressbook` ORDER BY `Last Name`, `First Name`;";
   }
 
   $retval = mysql_query($query, $conn);
 
-
-
   if(!$retval) {
     die('Could not enter data: ' . mysql_error());
   } else if ($retrieval == 0) {
-    echo "<h2>Is this a retrieval? --> " . $retrieval . "</h2><br>";
-
     echo "<h2>Data has been submitted:</h2>";
 
     echo $_SESSION["creds"];
@@ -74,7 +70,9 @@ if( $_POST )
 
     echo $query;
   } else {
-    echo "<h2>Is this a retrieval? --> " . $retrieval . "</h2>";
+    echo "<h2>Here's what the query looked like:</h2><br>";
+
+    echo $query;
 
     echo "<br><h2>Data retrieved:</h2><br>";
 
